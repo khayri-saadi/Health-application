@@ -1,0 +1,23 @@
+import React from 'react'
+import {View , Text, Button } from 'react-native'
+
+
+
+
+function SupportS({ navigation, route}) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button
+          onPress={() => navigation.navigate('Home')}
+          title="support"
+        />
+        <Text>userToken</Text>
+      
+        
+     
+      </View>
+    );
+  }
+
+
+  export default SupportS;
