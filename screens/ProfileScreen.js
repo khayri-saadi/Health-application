@@ -1,138 +1,161 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useContext} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
+  Pressable,
 } from 'react-native';
+import { Context } from '../Services/Context';
 
+import {Octicons,MaterialCommunityIcons,Fontisto,MaterialIcons} from 'react-native-vector-icons'
+import { SafeAreaView } from 'react-native-safe-area-context';
 const Profile = ( {navigation , route})=> {
- 
-  const [data, setData] =  useState([
-        {
-          id: 1,
-          image: 'https://img.icons8.com/color/70/000000/cottage.png',
-          title: 'Order',
-        },
-        {
-          id: 2,
-          image: 'https://img.icons8.com/color/70/000000/administrator-male.png',
-          title: 'Like',
-        },
-        {
-          id: 3,
-          image: 'https://img.icons8.com/color/70/000000/filled-like.png',
-          title: 'Comment',
-        },
-        {
-          id: 4,
-          image: 'https://img.icons8.com/color/70/000000/facebook-like.png',
-          title: 'Download',
-        },
-        {
-          id: 5,
-          image: 'https://img.icons8.com/color/70/000000/shutdown.png',
-          title: 'Edit',
-        },
-      ])
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.headerContent}>
-            <Image
-              style={styles.avatar}
-              source={{
-                uri: 'https://bootdey.com/img/Content/avatar/avatar3.png',
-              }}
-            />
-            <Text style={styles.name}>Jane Doe</Text>
-          </View>
-        </View>
 
-        <View style={styles.body}>
-          <FlatList
-            style={styles.container}
-            enableEmptySections={true}
-            data={data}
-            keyExtractor={item => {
-              return item.id;
-            }}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity>
-                  <View style={styles.box}>
-                    <Image style={styles.icon} source={{uri: item.image}} />
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Image
-                      style={styles.btn}
-                      source={{
-                        uri: 'https://img.icons8.com/customer/office/40',
-                      }}
-                    />
+  const {Data, Signin} = useContext(Context)
+ console.log(Data.nom)
+    return (
+      <SafeAreaView style={styles.container}> 
+       
+              <View style={{margin: 10, flexDirection:'row'}}>
+                  <Image
+                    style={styles.avatar}
+                    source={{
+                      uri: 'https://media-exp1.licdn.com/dms/image/C5603AQHyQBO_S2Viog/profile-displayphoto-shrink_800_800/0/1605011466512?e=1671062400&v=beta&t=L0TbfqHqFM_PM64wPZarvCO0nyJEwpOP9Dp0iARDqaw',
+                    }}
+                  />
+                  <View style={{alignItems:'center', justifyContent:'center',padding:10}}> 
+                  <Text style={styles.title}>{Data.nom}</Text>
                   </View>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
-      </View>
+            </View>
+            <View>
+                    <View style={styles.userInformation}>
+                      <Octicons name='mail' size={20} />
+                      <Text style={styles.txt}>{Data.email}</Text>
+                    </View>
+                    <View style={{marginLeft:10,flexDirection:'row',padding:5}}>
+                      <Octicons name='device-mobile' size={20}  />
+                      <Text style={styles.txt}>Oxymeter</Text>
+                    </View>
+                    <View style={{marginLeft: 10, flexDirection: 'row', padding: 5}}>
+                        <Fontisto name="doctor" size={20}  />
+                        <Text
+                          style={styles.txt}>
+                          Oxymeter
+                        </Text>
+                    </View>
+            </View>
+             <View style={styles.menuWrapper}>
+             <Pressable onPress={()=> {console.log('hahaha')}} style={styles.menuItem} >
+                <MaterialCommunityIcons name='account-outline' size={35}  color='#ff6347'/>
+                  <Text style={styles.menuItemText}>Edit personnel information</Text>
+             </Pressable>
+             <Pressable
+              onPress={() => {
+                console.log ('hahaha')
+              }}
+              style={styles.menuItem}
+            >
+              <MaterialCommunityIcons name="account-settings" size={35} color="#ff6347" />
+              <Text style={styles.menuItemText}>Change password</Text>
+            </Pressable>
+            <Pressable
+                onPress={() => {
+                  console.log ('hahaha')
+                }}
+                style={styles.menuItem}
+              >
+                <MaterialCommunityIcons name="account-check-outline" size={35} color="#ff6347" />
+                <Text style={styles.menuItemText}>Support</Text>
+              </Pressable>
+              <Pressable
+  onPress={() => {
+    console.log ('hahaha');
+  }}
+  style={styles.menuItem}
+>
+  <MaterialIcons
+    name="explore"
+    size={35}
+    color="#ff6347"
+  />
+  <Text style={styles.menuItemText}>Support</Text>
+</Pressable>
+            </View>
+        </SafeAreaView>
+         
     );
   }
 
 export default Profile
 const styles = StyleSheet.create ({
-  header: {
-    backgroundColor: '#EE82EE',
-  },
-  headerContent: {
-    padding: 30,
-    alignItems: 'center',
+  container : {
+    flex:1
   },
   avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 63,
-    borderWidth: 4,
-    borderColor: '#FF6347',
-    marginBottom: 10,
+    borderRadius : 120,
+    width : 120,
+    aspectRatio : 1,
+    marginTop : 10
   },
-  icon: {
-    width: 40,
-    height: 40,
+   title: {
+    fontSize:18,
+    fontWeight:'bold',
+    marginLeft:15,
+    marginTop:15,
+    marginBottom:10,
   },
-  title: {
-    fontSize: 18,
-    color: '#EE82EE',
-    marginLeft: 4,
+  row:{
+    flexDirection:'row',
+    margin:15
   },
-  btn: {
-    marginLeft: 'auto',
-    width: 40,
-    height: 40,
+  txt:{
+ fontWeight:'600',
+ fontSize:14, 
+ marginLeft:10,
   },
-  body: {
-    backgroundColor: '#E6E6FA',
+  userInformation:{
+ marginLeft:10,
+ flexDirection:'row',
+ padding:5
   },
-  box: {
-    padding: 5,
-    marginBottom: 2,
-    backgroundColor: '#FFFFFF',
-    flexDirection: 'row',
-    shadowColor: 'black',
-    shadowOpacity: 0.2,
-    shadowOffset: {
-      height: 1,
-      width: -2,
-    },
-    elevation: 2,
+  header:{
+    flexDirection:'row',
+    margin:15
   },
-  username: {
-    color: '#20B2AA',
-    fontSize: 22,
-    alignSelf: 'center',
-    marginLeft: 10,
+  caption : {
+    fontSize:14,
+    fontWeight:'500',
+    lineHeight:14
   },
+ 
+  infoBoxWrapper: {
+    borderBottomColor:'#dddddd',
+    borderBottomWidth:1,
+    borderTopColor:'#dddd',
+    borderWidth:1.5,
+    flexDirection:'row',
+    height:100,
+
+  },
+  infoBox:{
+    width:'50%',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  menuItemText:{
+    color:'#777',
+    margin : 15,
+    fontWeight:'600',
+    fontSize:14,
+    lineHeight:16,
+  },
+  menuWrapper:{
+    marginTop:100
+  },
+  menuItem:{
+    flexDirection:'row',
+    paddingHorizontal:20,
+    paddingVertical:5
+  }
 });

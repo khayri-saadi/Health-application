@@ -7,18 +7,20 @@ import Icon from 'react-native-vector-icons/AntDesign'
 import Icon1  from 'react-native-vector-icons/MaterialIcons'
 import  {login} from '../Services/Newapi'
 import { Context } from '../Services/Context'
-
+import Apirequest from '../Services/Apirequest'
 
 const SignInScreen = ({navigation})=> {
-   const [email, setEmail] = useState('khouloud272@gmail.com')
-   const [password, setPassword] = useState('kouloud2566')
+   const [email, setEmail] = useState('')
+   const [password, setPassword] = useState('')
 const {Signin} = useContext(Context)
+
+
 const handleLogin = async() => {
     const response = await login(email,password)  
+    console.log(Apirequest,'hello')
    if(response) {
     Signin (response);
-   }
-     
+   }   
 }
     const onForgotPass = () => {
         console.warn('forgot password')
@@ -38,12 +40,12 @@ const handleLogin = async() => {
             <Image source={Logo3}  style={[styles.logo, {height : height * 0.3}]} resizeMode='contain' />
             <View style={styles.iconView}>
                 <Icon name='mail' size={24} style={{marginRight : 10}} />
-                 <CustomInput value={email} onChange={setEmail} style={{marginHorizontal : 5}}
+                 <CustomInput value={email} setValue={setEmail} style={{marginHorizontal : 5}}
                  placeholder='Email' />
             </View>
             <View style={styles.iconView}>
                 <Icon1 name='lock-outline' size={24} style={{marginRight : 10}}  />
-                <CustomInput  value={password} onChange={setPassword}
+                <CustomInput  value={password} setValue={setPassword}
                         secureTextEntry={true}
                         placeholder='Password'
                     />

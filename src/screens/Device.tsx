@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState,useContext} from 'react';
 import { Text, ScrollView, Button, View, StyleSheet } from 'react-native';
 import { Service } from 'react-native-ble-plx';
 import { ServiceCard } from '../components/ServiceCard';
@@ -9,6 +9,8 @@ const DeviceScreen = ({
   route,
   navigation,
 }: StackScreenProps<RootStackParamList, 'Device'>) => {
+
+
   // get the device object which was given through navigation params
   const { device } = route.params;
 

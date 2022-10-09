@@ -6,13 +6,11 @@ import ApiClient from './Apirequest'
  export const login  =  async(email,password) => {
 try {
     const response = await ApiClient.post('/users/login',{email,password})
-    //console.log(response.headers['set-cookie'][0].split(';')[0])
+    console.log(ApiClient)
     const status = response.data.status
     const user = response.data.user
     const token = response.headers['set-cookie'][0].split(';')[0]
-    //console.log(status)
-    //console.log(user)
-   // console.log(token)
+    console.log(response)
     return response
 
 
@@ -21,11 +19,10 @@ try {
 }
 }
 
-export const Register = async(email,Password,name,confirmPassword) =>{
-    console.log('hello')
-    console.log('signup')
+export const Register = async(data) =>{
     try {
-        const response = await ApiClient.post('/users/signup',{email,Password,name,confirmPassword})
+       console.log(data)
+        const response = await ApiClient.post('/users/signup',{...data})
         return response
     }
     catch {

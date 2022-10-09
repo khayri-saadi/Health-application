@@ -9,20 +9,17 @@ import { Register } from '../Services/Newapi'
 
 
 const SignUpScreen = ({navigation})=> {
-    const [email, setEmail] = useState('khayrikharmach@gmail.com')
-    const [name,setName] = useState('khayrii')
-    const [confirmPassword, setConfirmPassword] = useState('khayri2566')
-    const [Password, setPassword] = useState('khayri2566')
-
+    const [email, setEmail] = useState('khayri555saadi@gmail.com')
+    const [name,setName] = useState('khayri')
+    const [confirmPassword, setConfirmPassword] = useState('12345678kh')
+    const [password, setPassword] = useState('12345678kh')
 
 const {Signup} = useContext(Context)
-
 const HandleSignUP = async () => {
-    const response = await Register(email,Password,name,confirmPassword)
+    const response = await Register({email,password,name,confirmPassword})
+    console.log(response)
     Signup(response)
-
 }
-
 
   
     const onForgotPass = () => {
@@ -62,7 +59,7 @@ const HandleSignUP = async () => {
             </View>
           <View style={styles.iconView}>
           <Icon1 name='lock-outline' size={24} style={{marginRight:10}} />
-          <CustomInput  Value={Password} setValue={setPassword} 
+          <CustomInput  Value={password} setValue={setPassword} 
                 secureTextEntry={true}
                 placeholder='Password'
             />

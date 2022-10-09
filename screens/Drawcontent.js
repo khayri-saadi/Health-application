@@ -18,20 +18,15 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Context } from '../Services/Context';
-
-
 const DrawerContent = ( {route,...props} ) => {
-
 
   const paperTheme = useTheme()
  
  
   const {SignOut, ToggleTheme, Signin} = useContext(Context)
   
-
-  
-
-
+const {Data} = useContext(Context)
+console.log(Data.nom_Capteur)
 
     return(
 
@@ -43,7 +38,7 @@ const DrawerContent = ( {route,...props} ) => {
                       <Avatar.Image 
                         source = {{
 
-                              uri:'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/193452564_2908999485979695_509473682775650520_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=c4wU8K45VN0AX9WnvkD&_nc_ht=scontent.ftun1-2.fna&oh=00_AT84YkLAwts5P0dnzH1ViZVLMdYA_Vgf6fyg2WdXw6lCFQ&oe=62BFDB42'
+                              uri:'https://media-exp1.licdn.com/dms/image/C5603AQHyQBO_S2Viog/profile-displayphoto-shrink_800_800/0/1605011466512?e=1670457600&v=beta&t=1cEmTJBFWUTBT9zYaj_IYYux5psd-Peo2eYxB5iGb3I'
 
                         }
 
@@ -51,22 +46,9 @@ const DrawerContent = ( {route,...props} ) => {
                         size={50}
                       />
                       <View style={{marginLeft : 15 , flexDirection:'column'}}>
-                        <Title style={styles.title}>khayri</Title>
-                        <Caption style={styles.caption}>khayri  </Caption>
+                        <Title style={[styles.title, {}]}>{Data.nom}</Title>
                       </View>
-                    </View>
-                    <View style={styles.row}>
-                            <View style={styles.section}> 
-                              <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
-                              <Caption style={styles.caption}>Following</Caption>
-                            </View>
-                            <View style={styles.section}>
-                              <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
-                              <Caption style={styles.caption}>Followers</Caption>
-                            </View>
-                            
-                    </View>
-                      
+                    </View> 
                     </View>
                     <Drawer.Section style={styles.drawerSection}>
                     <DrawerItem 
@@ -101,20 +83,6 @@ const DrawerContent = ( {route,...props} ) => {
                  <DrawerItem 
                     icon={({color, size}) => (
                         <Icon 
-                        name="account-settings-outline" 
-                        color={color}
-                        size={size}
-                        onPress={()=> {
-                          props.navigation.navigate('Settings')
-                        }}
-                        />
-                    )}
-                    label="Settings"
-                   
-                />
-                 <DrawerItem 
-                    icon={({color, size}) => (
-                        <Icon 
                         name="account-check-outline" 
                         color={color}
                         size={size}
@@ -123,8 +91,7 @@ const DrawerContent = ( {route,...props} ) => {
                         }}
                         />
                     )}
-                    label="Historical;
-"
+                    label="Historical"
                    
                 />
                     </Drawer.Section>

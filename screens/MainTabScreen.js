@@ -3,20 +3,12 @@ import { Button, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Iconn from 'react-native-vector-icons/MaterialIcons'
-
-
-
-
-
-
-import HomeScreen from './HomeScreen';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeStackScreen from './HomeStackscreen'
-import DetailsStackScreen from './DetailsStackscreen'
 import NotificationsScreen from './DetailsScreen';
 import ExploreScreen from './ExploreScreen';
 import ProfileScreen from './ProfileScreen';
-import SettingsS from './SettingsScreen'
-
+import Chat from './Bookmark';
 const Tab = createBottomTabNavigator();
 const MainTabscreen = () => {
     return(
@@ -39,23 +31,12 @@ const MainTabscreen = () => {
         }}
       />
        <Tab.Screen
-        name="Notifications"
-        component={NotificationsScreen}
-        options={{
-          tabBarLabel: 'Notifications',
-        
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="ios-notifications" color={color} size={size} />
-          ),
-        }}
-      />
-       <Tab.Screen
         name="Explore"
-        component={ExploreScreen}
+        component={Chat}
         options={{
-          tabBarLabel: 'Explore',
+          tabBarLabel: 'Discussion',
           tabBarIcon: ({ color, size }) => (
-            <Iconn name="explore" color={color} size={size} />
+            <Icon1 name="android-messages" color={color} size={size} />
           ),
         }}
       />
