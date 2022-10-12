@@ -5,9 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Iconn from 'react-native-vector-icons/MaterialIcons'
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeStackScreen from './HomeStackscreen'
-import NotificationsScreen from './DetailsScreen';
-import ExploreScreen from './ExploreScreen';
 import ProfileScreen from './ProfileScreen';
+import ProfileStackP from './profileStackP';
 import Chat from './Bookmark';
 const Tab = createBottomTabNavigator();
 const MainTabscreen = () => {
@@ -24,7 +23,7 @@ const MainTabscreen = () => {
         name="Home"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <Icon name="ios-home" color={color} size={26} />
           ),
@@ -34,7 +33,7 @@ const MainTabscreen = () => {
         name="Explore"
         component={Chat}
         options={{
-          tabBarLabel: 'Discussion',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
             <Icon1 name="android-messages" color={color} size={size} />
           ),
@@ -42,16 +41,14 @@ const MainTabscreen = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackP}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
             <Icon name="ios-person" color={color} size={size} />
           ),
         }}
       />
-      
-  
     </Tab.Navigator>
     )
 }

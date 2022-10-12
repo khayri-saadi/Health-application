@@ -10,15 +10,6 @@ import {
 } from 'react-native';
 
 
-
-
-
-
-
-
-
-
-
 const  DataDoc = () => {
   return (
         <View style={styles.container}>

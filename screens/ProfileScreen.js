@@ -46,10 +46,7 @@ const Profile = ( {navigation , route})=> {
                     </View>
             </View>
              <View style={styles.menuWrapper}>
-             <Pressable onPress={()=> {console.log('hahaha')}} style={styles.menuItem} >
-                <MaterialCommunityIcons name='account-outline' size={35}  color='#ff6347'/>
-                  <Text style={styles.menuItemText}>Edit personnel information</Text>
-             </Pressable>
+           
              <Pressable
               onPress={() => {
                 console.log ('hahaha')
@@ -66,7 +63,7 @@ const Profile = ( {navigation , route})=> {
                 style={styles.menuItem}
               >
                 <MaterialCommunityIcons name="account-check-outline" size={35} color="#ff6347" />
-                <Text style={styles.menuItemText}>Support</Text>
+                <Text style={styles.menuItemText}>Settings</Text>
               </Pressable>
               <Pressable
   onPress={() => {
@@ -79,7 +76,7 @@ const Profile = ( {navigation , route})=> {
     size={35}
     color="#ff6347"
   />
-  <Text style={styles.menuItemText}>Support</Text>
+  <Text style={styles.menuItemText}>About doctor</Text>
 </Pressable>
             </View>
         </SafeAreaView>

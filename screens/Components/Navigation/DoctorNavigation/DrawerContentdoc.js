@@ -28,11 +28,8 @@ const DrawerContentDoc = (props ) => {
 
   const paperTheme = useTheme()
  
- 
-  const {SignOut, ToggleTheme, Signin} = useContext(Context)
-console.log(response.data.user,'uuuuuuuuuu')
-
-
+  const {SignOut, ToggleTheme, Data} = useContext(Context)
+  console.log(Data.lspatients.length)
     return(
             <View style={{flex :1}}>
             <DrawerContentScrollView {...props}>
@@ -42,25 +39,22 @@ console.log(response.data.user,'uuuuuuuuuu')
                       <Avatar.Image 
                         source = {{
 
-                              uri:'https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/193452564_2908999485979695_509473682775650520_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=c4wU8K45VN0AX9WnvkD&_nc_ht=scontent.ftun1-2.fna&oh=00_AT84YkLAwts5P0dnzH1ViZVLMdYA_Vgf6fyg2WdXw6lCFQ&oe=62BFDB42'
+                              uri:'https://scontent.ftun1-2.fna.fbcdn.net/v/t39.30808-6/255997299_4272261089567564_7204045446881231043_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=nTFrPHraAFoAX_1VP_b&_nc_ht=scontent.ftun1-2.fna&oh=00_AT8ALTlxcgUmqy7_1_AlUKPYPuPeFQZmT2vZoA9o6LVFtg&oe=6348B76C'
 
                         }
                         }
                         size={50}
                       />
                       <View style={{marginLeft : 15 , flexDirection:'column'}}>
-                        <Title style={styles.title}>khayri</Title>
-                        <Caption style={styles.caption}>khayri  </Caption>
+                        <Title style={styles.title}>{Data.nom}</Title>
                       </View>
                     </View>
                     <View style={styles.row}>
                             <View style={styles.section}> 
-                              <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
-                              <Caption style={styles.caption}>Following</Caption>
+                              <Paragraph style={[styles.paragraph, styles.caption]}>Number of patients</Paragraph>
                             </View>
                             <View style={styles.section}>
-                              <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
-                              <Caption style={styles.caption}>Followers</Caption>
+                              <Caption style={[styles.caption,{fontWeight:'bold', color:'#000'}]}>{Data.lspatients.length}</Caption>
                             </View>
                             
                     </View>
@@ -95,21 +89,7 @@ console.log(response.data.user,'uuuuuuuuuu')
                     label="Profile"
                    
                 />
-                 <DrawerItem 
-                    icon={({color, size}) => (
-                        <Iconn 
-                        name="notifications-none" 
-                        color={color}
-                        size={size}
-                        onPress={()=> {
-                          props.navigation.navigate('Notification')
-                        }}
-                        />
-                    )}
-                    label="Notifications"
-                />
                     </Drawer.Section>
-
                     <Drawer.Section title='Preferences'>
                       <TouchableRipple onPress={()=> {ToggleTheme()}}>
                       <View style={styles.preference}>

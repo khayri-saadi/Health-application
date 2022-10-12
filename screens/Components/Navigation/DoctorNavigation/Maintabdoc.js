@@ -4,12 +4,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Iconn from 'react-native-vector-icons/MaterialIcons'
 import ICON from 'react-native-vector-icons/FontAwesome5'
+import Icon1 from 'react-native-vector-icons/Fontisto'
 
 import UserListView from './Lspatients'
 import ProfileView from './Profiledoc'
-import NotifcationDoc from './Notification';
-import Supportscreen from './SupportDic';
+import NotifcationDoc from './MessageScreen';
+import Supportscreen from './MessagesScreen';
 import LspatientsStack from './LspateintsStack.js'
+import ProfileStack from './profileScreenStack';
+import MessageStack from './MessageStackscreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +30,7 @@ const MainTabscreenDoc = () => {
         name="users"
         component={LspatientsStack}
         options={{
-          tabBarLabel: 'doctor pateints',
+          tabBarLabel: '',
           tabBarIcon: ({ color }) => (
             <ICON name="users" color={color} size={26} />
           ),
@@ -35,36 +38,24 @@ const MainTabscreenDoc = () => {
       />
        <Tab.Screen
         name="Profile"
-        component={ProfileView}
+        component={ProfileStack}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
             <Icon name="ios-person" color={color} size={size} />
           ),
         }}
       />
-       
-      <Tab.Screen
-        name="Notification"
-        component={NotifcationDoc}
-        options={{
-          tabBarLabel: 'Notifications',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="ios-notifications" color={color} size={size} />
-          ),
-        }}
-      />
        <Tab.Screen
         name="About doctor"
-        component={Supportscreen}
+        component={MessageStack}
         options={{
-          tabBarLabel: 'About doctor',
+          tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
-            <Iconn name="explore" color={color} size={size} />
+            <Icon1 name="messenger" color={color} size={size} />
           ),
         }}
       />
-  
     </Tab.Navigator>
     )
 }

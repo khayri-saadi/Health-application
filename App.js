@@ -47,6 +47,7 @@ export default function App () {
   const [name, setName] = useState ('');
   const [userRole, setUserRole] = useState ('user');
   const [userCapt,setUsercapt] = useState('')
+  const [lsPatient,setLspatient] = useState([{}])
 
   const authocontext = useMemo ( () => ({
    Signin:  async (Response) => {
@@ -57,6 +58,7 @@ export default function App () {
     setName (res.data.user.name);
     setUserRole (res.data.user.role);
     setUsercapt(res.data.user.nom_Capteur)
+    setLspatient(res.data.user.Lspatients)
     },
     Signup: Response => {
       setUserToken(Response?.headers['set-cookie'][0].split (';')[0]);
@@ -74,9 +76,12 @@ export default function App () {
     nom : name ? name : null,
     email : email ? email : null,
     role : userRole ? userRole : null,
-    nom_Capteur : userCapt ? userCapt : null
-   }
+    nom_Capteur : userCapt ? userCapt : null,
+    lspatients: lsPatient ? lsPatient : null
+   },
   }));
+
+  console.log(lsPatient,'hhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
   useEffect (() => {
     setTimeout (() => {
       setLoading (false);

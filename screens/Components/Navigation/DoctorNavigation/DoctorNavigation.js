@@ -4,7 +4,7 @@ import  MainTabscreenDoc from './Maintabdoc'
 import DrawerContentDoc from './DrawerContentdoc';
 import UserListView from './Lspatients'
 import ProfileView  from './Profiledoc'
-import NotifcationDoc from './Notification';
+import NotifcationDoc from './MessageScreen';
 const Drawer = createDrawerNavigator();
 const DoctorNavigation = ()=> {
     return (

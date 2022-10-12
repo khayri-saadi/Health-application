@@ -1,22 +1,17 @@
-import React, { Component, useContext } from 'react';
+import React, { Component, useContext,useState } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   Image,
-  Alert,
-  ScrollView,
+
   TextInput,
   FlatList,
-  Button
 } from 'react-native';
 
-export default class Chat extends Component {
-
-  constructor({route,...props}) {
-    super(props);
-    this.state = {
+const  Chat = ({route,...props})=> {
+    const [state,setState] = useState({
       data: [
         {id:1, date:"9:50 am", type:'in',  message: "Lorem ipsum dolor sit amet"},
         {id:2, date:"9:50 am", type:'out', message: "Lorem ipsum dolor sit amet"} ,
@@ -28,23 +23,11 @@ export default class Chat extends Component {
         {id:8, date:"9:50 am", type:'in',  message: "Lorem ipsum dolor sit a met"},
         {id:9, date:"9:50 am", type:'in',  message: "Lorem ipsum dolor sit a met"},
       ]
-    };
-  }
-
-  renderDate = (date) => {
-    return(
-      <Text style={styles.time}>
-        {date}
-      </Text>
-    );
-  }
-
-  render() {
-
+    })
     return (
       <View style={styles.container}>
         <FlatList style={styles.list}
-          data={this.state.data}
+          data={state.data}
           keyExtractor= {(item) => {
             return item.id;
           }}
@@ -55,11 +38,11 @@ export default class Chat extends Component {
             let itemStyle = inMessage ? styles.itemIn : styles.itemOut;
             return (
               <View style={[styles.item, itemStyle]}>
-                {!inMessage && this.renderDate(item.date)}
+                {!inMessage && <Text style={styles.time}>{item.date}</Text>}
                 <View style={[styles.balloon]}>
                   <Text>{item.message}</Text>
                 </View>
-                {inMessage && this.renderDate(item.date)}
+                {inMessage && <Text style={styles.time}>{item.date}</Text>}
               </View>
             )
           }}/>
@@ -68,7 +51,7 @@ export default class Chat extends Component {
             <TextInput style={styles.inputs}
                 placeholder="Write a message..."
                 underlineColorAndroid='transparent'
-                onChangeText={(name_address) => this.setState({name_address})}/>
+                onChangeText={(msg) => setState({msg})}/>
           </View>
 
             <TouchableOpacity style={styles.btnSend}>
@@ -77,9 +60,8 @@ export default class Chat extends Component {
         </View>
       </View>
     );
-  }
-}
-
+   }
+export default Chat;
 const styles = StyleSheet.create({
   container:{
     flex:1

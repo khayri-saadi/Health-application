@@ -79,21 +79,6 @@ console.log(Data.nom_Capteur)
                     label="Discussion"
                    
                 />
-                
-                 <DrawerItem 
-                    icon={({color, size}) => (
-                        <Icon 
-                        name="account-check-outline" 
-                        color={color}
-                        size={size}
-                        onPress={()=> {
-                          props.navigation.navigate('Support')
-                        }}
-                        />
-                    )}
-                    label="Historical"
-                   
-                />
                     </Drawer.Section>
 
                     <Drawer.Section title='Preferences'>

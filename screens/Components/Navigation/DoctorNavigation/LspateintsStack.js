@@ -19,9 +19,10 @@ const List = createStackNavigator()
 const LspatientsStack = ({navigation})=> {
     return(
         <List.Navigator screenOptions={{headerStyle:{
-            backgroundColor : '#70b5f9'
+            backgroundColor : '#fff',
+            shadowColor: ('#000'),
           },
-          headerTintColor : '#ffff',
+          headerTintColor : '#000',
           headerBackTitleStyle : {
             fontWeight : 'bold',
             textAlign : 'center',
@@ -29,12 +30,15 @@ const LspatientsStack = ({navigation})=> {
             }}>
             <List.Screen name='list' component={UserListView}  options={{
         title:'Patient list',
+        headerTitleAlign:'center',
         headerLeft: () => (
-            <Icon.Button name="ios-menu" size={25} backgroundColor="#70b5f9" onPress={() => navigation.openDrawer()}></Icon.Button>
+            <Icon.Button name="ios-menu" size={30} backgroundColor="#fff" color='#000' onPress={() => navigation.openDrawer()}></Icon.Button>
         )
         }}/>
-        <List.Screen name='message' component={DiscussionDoc} />
-        <List.Screen name='data' component={DataDoc} />
+        <List.Screen name='message' component={DiscussionDoc}  options={{
+        title:'Discussion',
+        headerTitleAlign:'center'}} />
+        <List.Screen name='data' component={DataDoc} options={{title:'data history',headerTitleAlign: ('center') }} />
 
 
         </List.Navigator>
