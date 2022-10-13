@@ -12,6 +12,7 @@ const MessagesScreen = ({navigation})=> {
                
                 <TouchableOpacity style={styles.Card} onPress={()=> {
                     navigation.navigate('message', {userName:item.userNam})
+                    
                 }}>
                         <View style={styles.userInfo}>
                             <View style={styles.UserImageWrapper}>

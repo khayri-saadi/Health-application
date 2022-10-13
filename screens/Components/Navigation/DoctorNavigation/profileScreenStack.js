@@ -22,9 +22,6 @@ const ProfileStack = ({navigation})=>  {
         <Profile.Screen name='profile'  component={ProfileView}  options={{
         title:'Profile',
          headerTitleAlign:'center',
-        headerLeft: () => (
-            <Icon.Button name="ios-menu" size={30} backgroundColor="#ffff" color='#000' onPress={() => navigation.openDrawer()}></Icon.Button>
-        ),
         headerRight :()=> (
             <Icon1.Button
             name="account-edit"

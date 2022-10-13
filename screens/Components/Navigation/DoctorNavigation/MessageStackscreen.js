@@ -24,9 +24,6 @@ const MessageStack = ({navigation})=> {
             <Msg.Screen name='messages' component={MessagesScreen} options={{
         title:'Messages',
         headerTitleAlign:'center',
-        headerLeft: () => (
-            <Icon.Button name="ios-menu" size={30} backgroundColor="#fff" color='#000' onPress={() => navigation.openDrawer()}></Icon.Button>
-        )
         }} />
             <Msg.Screen name='message' component={MessageScreen}
             options={({route})=> ({

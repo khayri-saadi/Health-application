@@ -31,13 +31,12 @@ const LspatientsStack = ({navigation})=> {
             <List.Screen name='list' component={UserListView}  options={{
         title:'Patient list',
         headerTitleAlign:'center',
-        headerLeft: () => (
-            <Icon.Button name="ios-menu" size={30} backgroundColor="#fff" color='#000' onPress={() => navigation.openDrawer()}></Icon.Button>
-        )
+       
         }}/>
-        <List.Screen name='message' component={DiscussionDoc}  options={{
-        title:'Discussion',
-        headerTitleAlign:'center'}} />
+        <List.Screen name='message' component={DiscussionDoc}  options={({route})=> ({
+                title:route.params.name,
+                headerBackTitleStyle:false
+            })} />
         <List.Screen name='data' component={DataDoc} options={{title:'data history',headerTitleAlign: ('center') }} />
 
 

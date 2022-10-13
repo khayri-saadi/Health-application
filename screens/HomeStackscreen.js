@@ -7,13 +7,12 @@ import {useTheme} from '@react-navigation/native'
 
 const HomeStack = createNativeStackNavigator()
 const HomeStackScreen = ({navigation}) => {
-
   const {colors} =  useTheme()
   return(
     <HomeStack.Navigator   screenOptions={{headerStyle:{
-      backgroundColor : '#70b5f9'
+      backgroundColor : '#fff'
     },
-    headerTintColor : '#ffff',
+    headerTintColor : '#000',
     headerBackTitleStyle : {
       fontWeight : 'bold',
       textAlign : 'center',
@@ -21,10 +20,9 @@ const HomeStackScreen = ({navigation}) => {
       }}
       >
       <HomeStack.Screen name='home' component={HomeScreen}  options={{
-        title:'',
-        headerLeft: () => (
-            <Icon.Button name="ios-menu" size={25} backgroundColor="#70b5f9" onPress={() => navigation.openDrawer()}></Icon.Button>
-        )
+        title:'Scan devices',
+      headerTitleAlign: 'center',
+      headerTitleStyle:{fontWeight:'bold',fontSize:22}
         }}/> 
         <HomeStack.Screen  name='Device' component={DeviceScreen}/>
     </HomeStack.Navigator>

@@ -51,7 +51,7 @@ const EditProfile = ()=> {
                 <Feather name="phone" size={24} style={{marginRight: 10}} />
                 <CustomInput placeholder="phone number" keyType={'number-pad'} />
             </View>
-           <TouchableOpacity style={styles.commandButton} nnPress={()=> {}}>
+           <TouchableOpacity style={styles.commandButton} onPress={()=> {}}>
                      <Text style={styles.panelButtonTitle}>Submit</Text>
            </TouchableOpacity>
         </View>

@@ -69,9 +69,7 @@ const HomeScreen = () => {
 
   const ListHeaderComponent = () => (
     <View style={{backgroundColor:'#fff', width : '100%',height:130}}>
-      <View style={styles.title}>
-        <Text style={styles.sectionTitle}>Scan devices</Text>
-      </View>
+     
          <View style={styles.sectionContainer} >
           <View style={styles.sectionOne} >
              <Button

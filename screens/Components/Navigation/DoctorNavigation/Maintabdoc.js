@@ -17,6 +17,15 @@ import MessageStack from './MessageStackscreen';
 
 const Tab = createBottomTabNavigator();
 const MainTabscreenDoc = () => {
+
+  const getTabBarVisibility = (route)=> {
+    const routeName = route.state ? route.state.routes[route.state.index].name:''
+    if(routeName === 'message') {
+      return false
+    }
+    return true
+
+  }
     return(
         <Tab.Navigator
         initialRouteName="users"
@@ -49,12 +58,12 @@ const MainTabscreenDoc = () => {
        <Tab.Screen
         name="About doctor"
         component={MessageStack}
-        options={{
+        options={({route})=> ({
           tabBarLabel: '',
           tabBarIcon: ({ color, size }) => (
             <Icon1 name="messenger" color={color} size={size} />
           ),
-        }}
+          })}
       />
     </Tab.Navigator>
     )

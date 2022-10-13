@@ -11,9 +11,9 @@ import {
   DarkTheme as PaperDarktheme,
   DefaultTheme as Paperdefaultheme,
 } from 'react-native-paper';
-import UserNavigation from './screens/Components/Navigation/Usernavigation';
 import Navigation from '././screens/Components/Navigation/Navigation';
-import DoctorNavigation from './screens/Components/Navigation/DoctorNavigation/DoctorNavigation';
+import MainTabscreenDoc from './screens/Components/Navigation/DoctorNavigation/Maintabdoc';
+import MainTabscreen from './screens/MainTabScreen'
 
 export default function App () {
   const [isDarkT, setIsDarkT] = useState (false);
@@ -100,9 +100,9 @@ export default function App () {
       <Context.Provider value={authocontext}>
         <NavigationContainer theme={theme}>
           {userToken !== null && userRole === 'user'
-            ? <UserNavigation/>
+            ? <MainTabscreen/>
             : userToken !== null && userRole === 'doctor'
-              ? <DoctorNavigation/>
+              ? <MainTabscreenDoc/>
                 : <Navigation/>}
         </NavigationContainer>
       </Context.Provider>

@@ -6,7 +6,8 @@ import {
   View,
   Image,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Pressable
 } from 'react-native';
 import { Context } from '../../../../Services/Context';
 import {Avatar,
@@ -17,10 +18,9 @@ Title} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/Octicons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon2 from 'react-native-vector-icons/Fontisto'
-
 const  ProfileView = ()=> {
 
-  const {Data} = useContext (Context)
+  const {SignOut,Data} = useContext(Context)
     return (
       <SafeAreaView style={styles.container}>
             <View style={styles.userInfosection}>
@@ -69,14 +69,11 @@ const  ProfileView = ()=> {
                 <Icon2 name="player-settings" size={30} color="#ff6347" />
                 <Text style={styles.menuItemText}>settings</Text>
               </View>
-              </TouchableOpacity>
-              <TouchableOpacity>
-              <View style={styles.menuItem}>
-                <Icon1 name="account-check-outline" size={30} color="#ff6347" />
-                <Text style={styles.menuItemText}>Support</Text>
-              </View>
-            </TouchableOpacity>  
+              </TouchableOpacity> 
             </View>
+            <Pressable style={styles.commandButton} onPress={SignOut}>
+              <Text style={styles.panelButtonTitle}>Sign Out</Text>
+            </Pressable>
       </SafeAreaView>
     );
   }
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent:'center'
   },
   menuWrapper:{
-    marginTop:50
+    marginTop:30
   },
   menuItem:{
     flexDirection:'row',
@@ -149,5 +146,19 @@ const styles = StyleSheet.create({
     fontWeight:'500',
     fontSize:14,
     lineHeight:26
-  }
+  },
+   commandButton:{
+        width:'90%',
+        marginLeft:19,
+        padding:12,
+        borderRadius:5,
+        backgroundColor:'#FF6347',
+        alignItems:'center',
+        marginTop:60,
+    },  
+     panelButtonTitle:{
+        fontSize:15,
+        fontWeight:'bold',
+        color:'white'
+    },
 });

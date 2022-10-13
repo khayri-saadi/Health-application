@@ -5,27 +5,26 @@ import {
   View,
   Image,
   Pressable,
+  TouchableOpacity
 } from 'react-native';
 import { Context } from '../Services/Context';
-
 import {Octicons,MaterialCommunityIcons,Fontisto,MaterialIcons} from 'react-native-vector-icons'
 import { SafeAreaView } from 'react-native-safe-area-context';
 const Profile = ( {navigation , route})=> {
 
-  const {Data, Signin} = useContext(Context)
+  const {Data, Signin,SignOut} = useContext(Context)
  console.log(Data.nom)
     return (
       <SafeAreaView style={styles.container}> 
-       
-              <View style={{margin: 10, flexDirection:'row'}}>
+              <View style={{margin: 10, flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
                   <Image
                     style={styles.avatar}
                     source={{
                       uri: 'https://media-exp1.licdn.com/dms/image/C5603AQHyQBO_S2Viog/profile-displayphoto-shrink_800_800/0/1605011466512?e=1671062400&v=beta&t=L0TbfqHqFM_PM64wPZarvCO0nyJEwpOP9Dp0iARDqaw',
                     }}
                   />
-                  <View style={{alignItems:'center', justifyContent:'center',padding:10}}> 
-                  <Text style={styles.title}>{Data.nom}</Text>
+                  <View style={{alignItems:'center', justifyContent:'center',padding:5}}> 
+                    <Text style={styles.title}>{Data.nom}</Text>
                   </View>
             </View>
             <View>
@@ -47,39 +46,33 @@ const Profile = ( {navigation , route})=> {
             </View>
              <View style={styles.menuWrapper}>
            
-             <Pressable
-              onPress={() => {
-                console.log ('hahaha')
-              }}
-              style={styles.menuItem}
-            >
-              <MaterialCommunityIcons name="account-settings" size={35} color="#ff6347" />
-              <Text style={styles.menuItemText}>Change password</Text>
-            </Pressable>
-            <Pressable
-                onPress={() => {
-                  console.log ('hahaha')
-                }}
-                style={styles.menuItem}
-              >
-                <MaterialCommunityIcons name="account-check-outline" size={35} color="#ff6347" />
-                <Text style={styles.menuItemText}>Settings</Text>
-              </Pressable>
-              <Pressable
-  onPress={() => {
-    console.log ('hahaha');
-  }}
-  style={styles.menuItem}
->
-  <MaterialIcons
-    name="explore"
-    size={35}
-    color="#ff6347"
-  />
-  <Text style={styles.menuItemText}>About doctor</Text>
-</Pressable>
-            </View>
-        </SafeAreaView>
+                <TouchableOpacity
+                  onPress={() => {
+                    console.log ('hahaha')
+                  }}
+                  style={styles.menuItem}
+                >
+                <MaterialCommunityIcons name="account-settings" size={35} color="#ff6347" />
+                <Text style={styles.menuItemText}>Change password</Text>
+                </TouchableOpacity>
+                  <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('Home')
+                  }}
+                  style={styles.menuItem}
+                >
+                  <MaterialIcons
+                    name="explore"
+                    size={35}
+                    color="#ff6347"
+                  />
+                    <Text style={styles.menuItemText}>About doctor</Text>
+                  </TouchableOpacity>
+              </View>
+          <TouchableOpacity style={styles.commandButton} onPress={SignOut}>
+              <Text style={styles.panelButtonTitle}>Sign Out</Text>
+          </TouchableOpacity>
+  </SafeAreaView>
          
     );
   }
@@ -90,10 +83,10 @@ const styles = StyleSheet.create ({
     flex:1
   },
   avatar: {
-    borderRadius : 120,
-    width : 120,
+    borderRadius : 150,
+    width : 150,
     aspectRatio : 1,
-    marginTop : 10
+    marginTop : 10,
   },
    title: {
     fontSize:18,
@@ -142,17 +135,31 @@ const styles = StyleSheet.create ({
   },
   menuItemText:{
     color:'#777',
-    margin : 15,
+    margin : 10,
     fontWeight:'600',
     fontSize:14,
     lineHeight:16,
   },
   menuWrapper:{
-    marginTop:100
+    marginTop:30,
   },
   menuItem:{
     flexDirection:'row',
     paddingHorizontal:20,
-    paddingVertical:5
-  }
+    paddingVertical:10
+  },
+  commandButton:{
+        width:'90%',
+        marginLeft:19,
+        padding:15,
+        borderRadius:5,
+        backgroundColor:'#FF6347',
+        alignItems:'center',
+        marginTop:60,
+    },  
+     panelButtonTitle:{
+        fontSize:15,
+        fontWeight:'bold',
+        color:'white'
+    },
 });

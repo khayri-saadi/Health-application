@@ -27,15 +27,6 @@ const ProfileStackP = ({navigation}) => {
         options={{
           title: 'Profile',
           headerTitleAlign: 'center',
-          headerLeft: () => (
-            <Icon.Button
-              name="ios-menu"
-              size={30}
-              backgroundColor="#ffff"
-              color="#000"
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
           headerRight: () => (
             <Icon1.Button
               name="account-edit"

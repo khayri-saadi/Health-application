@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Navigation from '../Navigation';
 import { Context } from '../../../../Services/Context';
+import MessageScreen from './MessageScreen'
 const UserListView = ({navigation}) =>{
   const {Data} = useContext(Context);
  //console.log(Data.lspatients,'inlss11')
@@ -40,7 +41,7 @@ const UserListView = ({navigation}) =>{
                 <Text style={styles.title}>{data[index].name}</Text>
                 <Text style={styles.description}>{data[index].email}</Text>
                 <View style={styles.buttons}>
-                  <TouchableHighlight style={[styles.button, styles.view]} onPress={() => {navigation.navigate('message')}}>
+                  <TouchableHighlight style={[styles.button, styles.view]} onPress={() => {navigation.navigate('message',{name:data[index].name})}}>
                     <Image style={styles.icon}  source={{uri: 'http://cdn.onlinewebfonts.com/svg/img_381628.png'}}/>
                   </TouchableHighlight>
                   <TouchableHighlight style={[styles.button, styles.view]} onPress={() => {navigation.navigate('data')}}>
